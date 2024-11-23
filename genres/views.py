@@ -3,5 +3,6 @@ from genres.models import Genre
 
 def genre_view(request):
     genres = Genre.objects.all()
-    return JsonResponse(genres)
+    data = [{'id': genre.id, 'name': genre.name} for genre in genres]
+    return JsonResponse(data, safe=False)
 
